@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>IPL First Innings Score Prediction</title>
+
+    <style>
+        bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        #contact {
+            background-color: rgb(0, 45, 66);
+            color: white;
+
+        }
+
+        #link:hover {
+            color: #14bf98;
+        }
+
+        #link {
+            color: white;
+            text-decoration: none;
+        }
+
+        #links:hover {
+            color: #14bf98;
+            text-decoration: none;
+        }
+
+        .btn {
+            font-size: 20px;
+            color: white;
+            background-color: rgb(0, 45, 66);
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            color: #14bf98;
+            background-color: white;
+            border-color: #14bf98;
+            font-weight: 500;
+        }
+
+        .ipl-banner-left {
+            display: inline-block;
+            position: absolute;
+            left: 40px;
+            top: 460px;
+            width: 320px;
+            height: 420px;
+            border-radius: 15px;
+            -webkit-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+            -moz-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+            box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+        }
+
+        .ipl-banner-right {
+            display: inline-block;
+            width: 320px;
+            height: 420px;
+            position: absolute;
+            right: 40px;
+            top: 460px;
+            border-radius: 15px;
+            -webkit-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+            -moz-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+            box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+        }
+
+        .image-width {
+            height: 429px;
+        }
+
+        .slider-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        @keyframes slide-animation-up {
+            0% {
+                top: 0;
+            }
+
+            6% {
+                top: -433px;
+            }
+
+            12% {
+                top: -866px;
+            }
+
+            18% {
+                top: -1299px;
+            }
+
+            24% {
+                top: -1732px;
+            }
+
+            30% {
+                top: -2165px;
+            }
+
+            36% {
+                top: -2598px;
+            }
+
+            42% {
+                top: -3031px;
+            }
+
+            50% {
+                top: -3031px;
+            }
+
+            56% {
+                top: -3031px;
+            }
+
+            62% {
+                top: -2598px;
+            }
+
+            68% {
+                top: -2165px;
+            }
+
+            74% {
+                top: -1732px;
+            }
+
+            80% {
+                top: -1299px;
+            }
+
+            86% {
+                top: -866px;
+            }
+
+            92% {
+                top: -433px;
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes slide-animation-down {
+            0% {
+                bottom: 3031px;
+            }
+
+            6% {
+                bottom: 2598px;
+            }
+
+            12% {
+                bottom: 2165px;
+            }
+
+            18% {
+                bottom: 1732px;
+            }
+
+            24% {
+                bottom: 1299px;
+            }
+
+            30% {
+                bottom: 866px;
+            }
+
+            36% {
+                bottom: 433px;
+            }
+
+            42% {
+                bottom: 0;
+            }
+
+            50% {
+                bottom: 0;
+            }
+
+            56% {
+                bottom: 0;
+            }
+
+            62% {
+                bottom: 433px;
+            }
+
+            68% {
+                bottom: 866px;
+            }
+
+            74% {
+                bottom: 1299px;
+            }
+
+            80% {
+                bottom: 1732px;
+            }
+
+            86% {
+                bottom: 2165px;
+            }
+
+            92% {
+                bottom: 2598px;
+            }
+
+            100% {
+                bottom: 3031px;
+            }
+        }
+
+        .slide-images-up {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            animation-name: slide-animation-up;
+            animation-duration: 50s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-out;
+        }
+
+        .slide-images-down {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            animation-name: slide-animation-down;
+            animation-duration: 50s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-out;
+        }
+
+        .image-container {
+            position: relative;
+            float: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous">
+        </script>
+    -->
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark " style="background-color:rgb(0,45,66);">
+        <div class="container-fluid">
+            <img src="/static/images/ipl.png" alt="Image" height=45px style="float: left; padding-left: 40px;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#" id="link"> HOME </a>
+                    <a class="nav-link" href="#info" id="links"> INFO </a>
+                    <a class="nav-link" href="#predict" id="links"> PREDICT </a>
+                    <a class="nav-link" href="#contact" id="links"> CONTACT </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5"
+                aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6"
+                aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7"
+                aria-label="Slide 8"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="/static/images/carousel/mi.jpg" class="d-block w-100" alt="Mumbai Indians">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Mumbai Indians</h1>
+                </div> 
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="/static/images/carousel/csk.jpg" class="d-block w-100" alt="Chennai Super Kings">
+                 <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Chennai Super Kings</h1>
+                </div> 
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/carousel/rcb.jpg" class="d-block w-100" alt="Royal Challengers Bangalore">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Royal Challengers Bangalore</h1>
+                </div> 
+            <div class="carousel-item">
+                <img src="/static/images/carousel/rr.jpg" class="d-block w-100" alt="Rajasthan Royals">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Rajasthan Royals</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/carousel/dc.jpg" class="d-block w-100" alt="Delhi Capitals">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Delhi Capitals</h1>
+                </div> 
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/carousel/kkr.jpg" class="d-block w-100" alt="Kolkata Knight Riders">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Kolkata Knight Riders</h1>
+                </div> 
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/carousel/k11p.jpg" class="d-block w-100" alt="Kings XI Punjab">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Kings XI Punjab</h1>
+                </div> 
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/carousel/srh.jpg" class="d-block w-100" alt="Sunrisers Hyderabad">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color:black; font-weight: bolder;">Sunrisers Hyderabad</h1>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> -->
+
+    <div style="background-color:rgb(0,45,66); height: 60px; padding-top: 15px;" id="info">
+        <h3 style="text-align: center; font-weight: bold; color: white; ">IPL First Innings Score Prediction</h3>
+    </div>
+
+    <br>
+
+    <div>
+        <div class="container marketing">
+            <br>
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <center>
+                        <img src="/static/images/bino1.png">
+                        <h2>Data Analysis</h2>
+                    </center>
+                    <ul style="text-align: left;">
+                        <li>Size of dataset : 9.04 MB.</li>
+                        <li> Shape :76015 rows, 15 columns.</li>
+                        <li> Data Source : Kaggle.</li>
+                    </ul>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <center>
+                        <img src="/static/images/visualize1.png">
+                        <h2> Data Visialization</h2>
+                    </center>
+                    <ul style="text-align: left;">
+                        <li>Use Matplotlib.pyplot and Seaborn Library for visualization.</li>
+                    </ul>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <center>
+                        <img src="/static/images/pie1.png">
+                        <h2> Data Prediction </h2>
+                    </center>
+                    <ul style="text-align: left;">
+                        <li> Predicting First Innings Final Score ( in range ). </li>
+                        <li> For prediction you have to fill all the details and clicl on 'Make Prediction Button'.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+    <div class="prediction-area">
+        <!-- IPL Banner - 1 -->
+        <div class='ipl-banner-left'>
+            <div class="slider-frame">
+                <div class="slide-images-up">
+                    <!-- Image-1 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/mi.jpg" alt="Mumbai Indians">
+                    </div>
+                    <!-- Image-2 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/srh.jpg" alt="Sunrisers Hyderabad">
+                    </div>
+                    <!-- Image-3 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/rcb.jpg" alt="Royal Challengers Bangalore">
+                    </div>
+                    <!-- Image-4 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/dc.jpg" alt="Delhi Capitals">
+                    </div>
+                    <!-- Image-5 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/rr.jpg" alt="Rajasthan Royals">
+                    </div>
+                    <!-- Image-6 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/kkr.jpg" alt="Kolkata Knight Riders">
+                    </div>
+                    <!-- Image-7 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/k11p.jpg" alt="Kings XI Punjab">
+                    </div>
+                    <!-- Image-8 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/csk.jpg" alt="Chennai Super Kings">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- IPL Banner - 2 -->
+        <div class='ipl-banner-right'>
+            <div class="slider-frame">
+                <div class="slide-images-down">
+                    <!-- Image-1 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/mi.jpg" alt="Mumbai Indians">
+                    </div>
+                    <!-- Image-2 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/srh.jpg" alt="Sunrisers Hyderabad">
+                    </div>
+                    <!-- Image-3 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/rcb.jpg" alt="Royal Challengers Bangalore">
+                    </div>
+                    <!-- Image-4 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/dc.jpg" alt="Delhi Capitals">
+                    </div>
+                    <!-- Image-5 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/kkr.jpg" alt="Kolkata Knight Riders">
+                    </div>
+                    <!-- Image-6 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/rr.jpg" alt="Rajasthan Royals">
+                    </div>
+                    <!-- Image-7 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/k11p.jpg" alt="Kings XI Punjab">
+                    </div>
+                    <!-- Image-8 -->
+                    <div class="image-container">
+                        <img class="image-width" src="/static/images/logo/csk.jpg" alt="Chennai Super Kings">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="/predict" method="POST">
+        <div style="background-color:rgb(0,45,66);">
+            <h3 style="text-align: center; color: white;">
+                Fill all the Details !!
+            </h3>
+        </div>
+        <br>
+        <br>
+        <div class="container" style="width: 50%;">
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
+                            name="venue" required>
+                            <option value="">--Select--</option>
+                            <option value="0">Barabati Stadium</option>
+                            <option value="1">Brabourne Stadium</option>
+                            <option value="2">Buffalo Park</option>
+                            <option value="3">De Beers Diamond Oval</option>
+                            <option value="4">Dr DY Patil Sports Academy</option>
+                            <option value="5">Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium</option>
+                            <option value="6">Dubai International Cricket Stadium</option>
+                            <option value="7">Eden Gardens</option>
+                            <option value="8">Feroz Shah Kotla</option>
+                            <option value="9">Himachal Pradesh Cricket Association Stadium</option>
+                            <option value="10">Holkar Cricket Stadium</option>
+                            <option value="11">JSCA International Stadium Complex</option>
+                            <option value="12">Kingsmead</option>
+                            <option value="13">M Chinnaswamy Stadium</option>
+                            <option value="14">MA Chidambaram Stadium, Chepauk</option>
+                            <option value="15">Maharashtra Cricket Association Stadium</option>
+                            <option value="16">New Wanderers Stadium</option>
+                            <option value="17">Newlands</option>
+                            <option value="18">OUTsurance Oval</option>
+                            <option value="19">Punjab Cricket Association IS Bindra Stadium, Mohali</option>
+                            <option value="20">Punjab Cricket Association Stadium, Mohali</option>
+                            <option value="21">Rajiv Gandhi International Stadium, Uppal</option>
+                            <option value="22">Sardar Patel Stadium, Motera</option>
+                            <option value="23">Sawai Mansingh Stadium</option>
+                            <option value="24">Shaheed Veer Narayan Singh International Stadium</option>
+                            <option value="25">Sharjah Cricket Stadium</option>
+                            <option value="26">Sheikh Zayed Stadium</option>
+                            <option value="27">St George's Park</option>
+                            <option value="28">Subrata Roy Sahara Stadium</option>
+                            <option value="29">SuperSport Park</option>
+                            <option value="30">Wankhede Stadium</option>
+                        </select>
+                        <label for="floatingSelectGrid">Venue:-</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
+                            name="bat_team" required>
+                            <option value="">--Select--</option>
+                            <option value="0">Chennai Super Kings</option>
+                            <option value="1">Delhi Capitals</option>
+                            <option value="2">Kings XI Punjab</option>
+                            <option value="3">Kolkata Knight Riders</option>
+                            <option value="4">Mumbai Indians</option>
+                            <option value="5">Rajasthan Royals</option>
+                            <option value="6">Royal Challengers Bangalore</option>
+                            <option value="7">Sunrisers Hyderabad</option>
+                        </select>
+                        <label for="floatingSelectGrid">Batting Teams:-</label>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
+                            name="bowl_team" required>
+                            <option value="">--Select--</option>
+                            <option value="0">Chennai Super Kings</option>
+                            <option value="1">Delhi Capitals</option>
+                            <option value="2">Kings XI Punjab</option>
+                            <option value="3">Kolkata Knight Riders</option>
+                            <option value="4">Mumbai Indians</option>
+                            <option value="5">Rajasthan Royals</option>
+                            <option value="6">Royal Challengers Bangalore</option>
+                            <option value="7">Sunrisers Hyderabad</option>
+                        </select>
+                        <label for="floatingSelectGrid">Bowling Teams:-</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">                        
+                        <input type="text" class="form-control" id="floatingInputGrid"
+                            placeholder="Enter Overs (>= 5.0)" name="overs" autocomplete="off" required>
+                        <label for="floatingInputGrid">Enter Overs (>= 5.0) :-</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Runs"
+                            name="runs" autocomplete="off" required>
+                        <label for="floatingInputGrid">Enter Runs :-</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Wickets"
+                            name="wickets" autocomplete="off" required>
+                        <label for="floatingInputGrid">Enter Wickets :-</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInputGrid"
+                            placeholder="Enter Runs scored in previous 5 Overs" name="runs_last_5" autocomplete="off"
+                            required>
+                        <label for="floatingInputGrid">Enter Runs scored in previous 5 Overs :-</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInputGrid"
+                            placeholder="Enter Wickets taken in previous 5 Overs" name="wickets_last_5"
+                            autocomplete="off" required>
+                        <label for="floatingInputGrid">Enter Wickets taken in previous 5 Overs :-</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div id="predict">
+                <div class="container" id="button" style="width:50%">
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-grid gap-2">
+                                <input type="submit" value="Make Prediction" class="btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </form>
+    <br>
+    <div id="contact" style="background-color:rgb(0,45,66);">
+        <div class="container">
+            <div id="contact" class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="text-container about">
+                                <br>
+                                <h4>Developed by:</h4>
+                                <h2 class="white">Vishal Upare</h2>
+                                <p class="white">Bachelor of Computer Application Student at Tilak Maharashtra
+                                    Vidyapeeth.
+                                </p>
+                                <p class="white">Email: vishalupare68@gmail.com </p>
+                            </div> <!-- end of text-container -->
+                        </div> <!-- end of col -->
+                        <div class="col-md-2">
+                            <div class="text-container">
+                                <br>
+                                <h4>Connect</h4>
+                                <ul class="list-unstyled li-space-lg white">
+                                    <li>
+                                        <a class="white" href="http://www.linkedin.com/in/vishal-upare-a8a092189/"
+                                            id="link">LinkedIn</a>
+                                    </li>
+                                    <li>
+                                        <a class="white" href="https://github.com/vish-68/" id="link">Github</a>
+                                    </li>
+                                    <li>
+                                        <a class="white" href="https://www.kaggle.com/vishalupare" id="link">Kaggle</a>
+                                    </li>
+                                </ul>
+                            </div> <!-- end of text-container -->
+                        </div> <!-- end of col -->
+                        <div class="col-md-2">
+                            <div class="text-container">
+                                <br>
+                                <h4>Tools Used</h4>
+                                <ul class="list-unstyled li-space-lg">
+                                    <li>
+                                        Jupyter Notebook
+                                    </li>
+                                </ul>
+                            </div> <!-- end of text-container -->
+                        </div> <!-- end of col -->
+                    </div> <!-- end of row -->
+                </div> <!-- end of container -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
